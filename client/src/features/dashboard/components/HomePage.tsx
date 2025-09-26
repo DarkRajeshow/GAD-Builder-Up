@@ -222,7 +222,7 @@ function HomePage(): JSX.Element {
 
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+        <div className="min-h-screen max-w-7xl px-4 mx-auto">
             {/* Floating Quick Actions */}
             <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
                 <div className={`mb-4`}>
@@ -247,15 +247,15 @@ function HomePage(): JSX.Element {
                     ))}
                 </div>
 
-                <Button
+                {/* <Button
                     onClick={() => setShowQuickActions(!showQuickActions)}
-                    className={`bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg hover:shadow-xl transform transition-all duration-200 ${showQuickActions ? 'rotate-45' : 'hover:scale-110'} rounded-full w-14 h-14 p-0`}
+                    className={`bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-sm hover:shadow-xl transform transition-all duration-200 ${showQuickActions ? 'rotate-45' : 'hover:scale-110'} rounded-full w-14 h-14 p-0`}
                 >
                     <Plus className="w-6 h-6" />
-                </Button>
+                </Button> */}
             </div>
 
-            <div className="w-screen mx-auto px-10 sm:px-12 lg:px-16 pt-8 pb-20">
+            <div className="mx-auto px-6 pt-8 pb-20">
                 {/* Enhanced Header */}
                 <div className="mb-8">
                     <div className="flex items-center justify-between mb-6">
@@ -264,9 +264,6 @@ function HomePage(): JSX.Element {
                                 <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-600 bg-clip-text text-transparent">
                                     Dashboard
                                 </h1>
-                                <div className="absolute -top-1 -right-2">
-                                    <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-pulse"></div>
-                                </div>
                             </div>
                             <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-200/50">
                                 <Eye className="w-4 h-4 text-gray-500" />
@@ -333,7 +330,7 @@ function HomePage(): JSX.Element {
                                     variant={activeQuickFilter === filter.id ? 'default' : 'outline'}
                                     size="sm"
                                     className={`transition-all duration-200 ${activeQuickFilter === filter.id
-                                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+                                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs'
                                         : 'hover:shadow-sm hover:border-blue-300'
                                         }`}
                                 >
@@ -376,7 +373,7 @@ function HomePage(): JSX.Element {
                                 onClick={toggleFilterPanel}
                                 variant={showFilterPanel ? 'default' : 'outline'}
                                 className={`transition-all duration-200 ${showFilterPanel
-                                    ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md'
+                                    ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-xs'
                                     : 'hover:shadow-sm hover:border-purple-300'
                                     }`}
                             >

@@ -14,7 +14,7 @@ function convertPDFtoSVG(inputPdfPath: string, outputSvgPath: string): Promise<v
     return new Promise((resolve, reject) => {
         const input = path.resolve(inputPdfPath);
         const output = path.resolve(outputSvgPath);
-        const command = `inkscape --without-gui --file="${input}" --export-plain-svg="${output}"`;
+        const command = `inkscape "${input}" --export-type=svg --export-plain-svg --export-filename="${output}"`;
 
         exec(command, (error: Error | null, stdout: string, stderr: string) => {
             if (error) {

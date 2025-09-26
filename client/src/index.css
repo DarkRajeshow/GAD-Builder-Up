@@ -7,13 +7,46 @@
 
 /* @custom-variant dark (&:is(.dark *)); */
 
-body {
-  @apply overflow-x-hidden w-screen min-h-screen font-medium bg-theme m-0 transition-all
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/fonts/ITCAvantGardeStd-Md.ttf');
+  font-weight: 500;
+  font-style: normal;
 }
 
-* {
-  font-family: "Montserrat", sans-serif;
+
+@font-face {
+  font-family: 'Elegant';
+  src: url('/fonts/Custom-Regular.woff2') format('woff2');
+  font-weight: 400;
+  /* Regular */
+  font-style: normal;
 }
+
+@font-face {
+  font-family: 'Elegant';
+  src: url('/fonts/Custom-Bold.woff2') format('woff2');
+  font-weight: 700;
+  /* Bold */
+  font-style: normal;
+}
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+body {
+  font-family: "Elegant", sans-serif;
+  @apply overflow-x-hidden w-screen min-h-screen font-bold m-0 p-0 transition-all;
+}
+
+/* 
+body {
+  @apply overflow-x-hidden w-screen min-h-screen font-medium bg-theme m-0 transition-all
+} */
+
+/* * {
+  font-family: "Montserrat", sans-serif;
+} */
 
 
 .svg-transform {
