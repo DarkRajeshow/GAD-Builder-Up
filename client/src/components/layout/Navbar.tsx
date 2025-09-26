@@ -10,6 +10,7 @@ import {
     DialogContent,
     DialogTitle,
     DialogDescription,
+    DialogTrigger,
     DialogFooter,
 } from '@/components/ui/dialog';
 import {
@@ -41,7 +42,7 @@ import {
     CommandSeparator,
 } from '@/components/ui/command';
 import { Switch } from '@/components/ui/switch';
-import { LogOut, User, Search, Sun, Moon, Bell, Upload, ChevronDown } from 'lucide-react';
+import { LogOut, User, Search, Sun, Moon, Bell, Upload, ChevronDown, Plus } from 'lucide-react';
 import { IUser } from '@/types/user.types.js';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { cn } from '@/lib/utils';
@@ -62,6 +63,7 @@ const Navbar = () => {
         description: ""
     });
     const [searchOpen, setSearchOpen] = useState(false);
+    const [showCreateDialog, setShowCreateDialog] = useState(false);
     const { isDark, toggleTheme, isLoading } = useDarkMode();
 
     const location = useLocation();
@@ -121,6 +123,9 @@ const Navbar = () => {
                 toast.success(data.status);
                 const projectId = data.project?._id;
                 navigate(`/projects/${projectId}`);
+                setShowCreateDialog(false);
+                // Reset form
+                setEmptyProjectData({ name: "", type: "", description: "" });
             } else {
                 toast.error(data.status);
             }
@@ -164,13 +169,14 @@ const Navbar = () => {
 
     // Quick actions
     const quickActions: QuickAction[] = [
+        { label: 'Create Project', icon: <Plus className="w-4 h-4" />, onClick: () => setShowCreateDialog(true), show: isAuthenticated },
         // { label: 'Upload', icon: <Upload className="w-4 h-4" />, onClick: () => toast.info('Upload coming soon!'), show: isAuthenticated },
     ];
 
     return (
         <>
             {/* Create Project Dialog */}
-            <Dialog>
+            <Dialog open={showCreateDialog} onOpenChange={setShowCreateDialog}>
                 <DialogContent className="max-w-md">
                     <DialogTitle className="text-center">Create A New Design</DialogTitle>
                     <DialogDescription>
